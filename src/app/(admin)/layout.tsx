@@ -1,19 +1,11 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 const navLinks = [
     { href: "/admin", label: "Dashboard" },
     { href: "/admin/products", label: "Products" },
 ];
 
-export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-    const session = await getServerSession(authOptions);
-    if (!session || (session.user as any).role !== "admin") {
-        redirect("/login");
-    }
-
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="min-h-screen bg-gray-50 flex">
             {/* Sidebar */}
@@ -35,7 +27,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                     ))}
                 </nav>
                 <div className="px-6 py-4 border-t border-gray-100 text-xs text-gray-400">
-                    Logged in as {session.user?.name}
+                    Logged in as Admin
                 </div>
             </aside>
 

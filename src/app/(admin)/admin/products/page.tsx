@@ -1,11 +1,9 @@
 import Link from "next/link";
-import dbConnect from "@/lib/db";
-import Product from "@/models/Product";
+import { mockDb } from "@/lib/mockData";
 import { formatPrice } from "@/lib/utils";
 
 async function getProducts() {
-    await dbConnect();
-    return Product.find({}).sort({ createdAt: -1 }).lean();
+    return mockDb.products.find();
 }
 
 export default async function AdminProductsPage() {

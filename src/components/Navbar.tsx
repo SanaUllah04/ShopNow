@@ -4,10 +4,19 @@ import Link from "next/link";
 import { useCart } from "@/store/cartStore";
 import { useSession, signOut } from "next-auth/react";
 
+import { useState, useEffect } from "react";
+
 export default function Navbar() {
+    const [mounted, setMounted] = useState(false);
     const totalItems = useCart((s) => s.totalItems);
+    const hydrate = useCart((s) => s.hydrate);
     const { data: session } = useSession();
     const isAdmin = (session?.user as any)?.role === "admin";
+
+    useEffect(() => {
+        hydrate();
+        setMounted(true);
+    }, [hydrate]);
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300">
@@ -23,7 +32,7 @@ export default function Navbar() {
                         <Link href="/products" className="hover:text-white transition-colors">
                             Products
                         </Link>
-                        {isAdmin && (
+                        {mounted && isAdmin && (
                             <Link href="/admin" className="hover:text-white transition-colors">
                                 Admin
                             </Link>
@@ -37,7 +46,7 @@ export default function Navbar() {
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
-                            {totalItems() > 0 && (
+                            {mounted && totalItems() > 0 && (
                                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-indigo-500 text-white text-[10px] rounded-full flex items-center justify-center font-black shadow-lg shadow-indigo-500/50">
                                     {totalItems()}
                                 </span>
@@ -45,23 +54,25 @@ export default function Navbar() {
                         </Link>
 
                         {/* Auth */}
-                        {session ? (
-                            <div className="flex items-center gap-4">
-                                <span className="text-xs font-bold text-slate-400 hidden sm:block uppercase tracking-wider">{session.user?.email?.split('@')[0]}</span>
-                                <button
-                                    onClick={() => signOut()}
-                                    className="px-4 py-2 rounded-xl bg-white/5 text-xs font-bold text-white border border-white/10 hover:bg-red-500/20 hover:border-red-500/40 transition-all"
+                        {mounted && (
+                            session ? (
+                                <div className="flex items-center gap-4">
+                                    <span className="text-xs font-bold text-slate-400 hidden sm:block uppercase tracking-wider">{session.user?.email?.split('@')[0]}</span>
+                                    <button
+                                        onClick={() => signOut()}
+                                        className="px-4 py-2 rounded-xl bg-white/5 text-xs font-bold text-white border border-white/10 hover:bg-red-500/20 hover:border-red-500/40 transition-all"
+                                    >
+                                        LOGOUT
+                                    </button>
+                                </div>
+                            ) : (
+                                <Link
+                                    href="/login"
+                                    className="px-6 py-2 rounded-xl bg-white text-slate-950 text-xs font-black uppercase tracking-widest hover:bg-slate-200 transition-colors shadow-lg"
                                 >
-                                    LOGOUT
-                                </button>
-                            </div>
-                        ) : (
-                            <Link
-                                href="/login"
-                                className="px-6 py-2 rounded-xl bg-white text-slate-950 text-xs font-black uppercase tracking-widest hover:bg-slate-200 transition-colors shadow-lg"
-                            >
-                                Sign In
-                            </Link>
+                                    Sign In
+                                </Link>
+                            )
                         )}
                     </div>
                 </div>

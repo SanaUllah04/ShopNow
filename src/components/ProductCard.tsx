@@ -1,41 +1,48 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function ProductCard({ p }: { p: any }) {
     return (
-        <div className="group relative bg-white/5 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-            <div className="relative aspect-[4/5] overflow-hidden">
-                <img
+        <Link 
+            href={`/products/${p._id}`}
+            className="group relative flex flex-col bg-slate-900/40 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 hover:border-indigo-500/20 hover:-translate-y-1 hover:shadow-2xl"
+        >
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-black flex items-center justify-center">
+                <Image
                     src={p.image}
                     alt={p.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40" />
 
-                {/* Floating Badge */}
-                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+                {/* Floating Category Badge */}
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     {p.category}
                 </div>
             </div>
 
-            <div className="p-6">
-                <h3 className="text-lg font-bold text-white mb-1 truncate leading-tight group-hover:text-indigo-400 transition-colors">
-                    {p.name}
-                </h3>
+            <div className="p-6 flex flex-col justify-between flex-1">
+                <div>
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">
+                        {p.name}
+                    </h3>
+                    <p className="text-slate-400 text-xs line-clamp-2 mt-2 leading-relaxed">
+                        {p.description}
+                    </p>
+                </div>
 
-                <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xl font-black text-white leading-none">
+                <div className="mt-6 flex items-center justify-between">
+                    <span className="text-xl font-black text-white">
                         ${p.price}
                     </span>
-                    <Link
-                        href={`/products/${p._id}`}
-                        className="p-3 bg-white text-slate-950 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-300 shadow-xl"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </Link>
+                    <span className="text-indigo-400 group-hover:text-indigo-300 font-bold text-sm flex items-center gap-1">
+                        Buy Now
+                        <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }

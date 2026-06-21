@@ -23,15 +23,14 @@ export default function EditProductPage() {
         async function fetchProduct() {
             const res = await fetch(`/api/products/${id}`);
             const data = await res.json();
-            if (data.product) {
-                const p = data.product;
+            if (res.ok && data) {
                 setForm({
-                    name: p.name,
-                    description: p.description,
-                    price: p.price.toString(),
-                    category: p.category,
-                    image: p.image,
-                    stock: p.stock.toString(),
+                    name: data.name || "",
+                    description: data.description || "",
+                    price: data.price !== undefined ? data.price.toString() : "",
+                    category: data.category || "",
+                    image: data.image || "",
+                    stock: data.stock !== undefined ? data.stock.toString() : "",
                 });
             }
             setFetching(false);
@@ -57,19 +56,18 @@ export default function EditProductPage() {
         const data = await res.json();
         setLoading(false);
 
-        if (data.success) {
+        if (res.ok) {
             router.push("/admin/products");
             router.refresh();
         } else {
-            setError(data.error ?? "Failed to update product.");
+            setError(data?.error ?? "Failed to update product.");
         }
     };
 
     const handleDelete = async () => {
         if (!confirm("Are you sure you want to delete this product?")) return;
         const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
-        const data = await res.json();
-        if (data.success) {
+        if (res.ok) {
             router.push("/admin/products");
             router.refresh();
         }

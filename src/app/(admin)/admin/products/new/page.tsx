@@ -37,11 +37,11 @@ export default function NewProductPage() {
         const data = await res.json();
         setLoading(false);
 
-        if (data.success) {
+        if (res.ok) {
             router.push("/admin/products");
             router.refresh();
         } else {
-            setError(data.error ?? "Failed to create product.");
+            setError(data?.error ?? "Failed to create product.");
         }
     };
 

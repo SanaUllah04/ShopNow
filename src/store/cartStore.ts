@@ -9,6 +9,7 @@ type CartState = {
     add: (item: Omit<CartItem, "qty">) => void;
     remove: (_id: string) => void;
     setQty: (_id: string, qty: number) => void;
+    clear: () => void;
     totalItems: () => number;
     hydrate: () => void;
 };
@@ -36,6 +37,10 @@ export const useCart = create<CartState>((set, get) => ({
         const items = [...get().items].map(i => i._id === _id ? { ...i, qty } : i);
         localStorage.setItem("cart", JSON.stringify(items));
         set({ items });
+    },
+    clear: () => {
+        localStorage.setItem("cart", JSON.stringify([]));
+        set({ items: [] });
     },
     totalItems: () => get().items.reduce((acc, item) => acc + item.qty, 0)
 }));

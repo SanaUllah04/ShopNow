@@ -1,23 +1,14 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import dbConnect from "@/lib/db";
-import Product from "@/models/Product";
-import Order from "@/models/Order";
-import User from "@/models/User";
+import { mockDb } from "@/lib/mockData";
 
 async function getDashboardStats() {
-    await dbConnect();
-    const [productCount, orderCount, userCount] = await Promise.all([
-        Product.countDocuments(),
-        Order.countDocuments(),
-        User.countDocuments({ role: "user" }),
-    ]);
+    const productCount = mockDb.products.countDocuments();
+    const orderCount = mockDb.orders.countDocuments();
+    const userCount = mockDb.users.countDocuments({ role: "user" });
     return { productCount, orderCount, userCount };
 }
 
 export default async function AdminDashboard() {
-    const session = await getServerSession(authOptions);
     const { productCount, orderCount, userCount } = await getDashboardStats();
 
     const stats = [
@@ -30,7 +21,7 @@ export default async function AdminDashboard() {
         <div>
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-                <p className="text-gray-500 mt-1">Welcome back, {session?.user?.name}</p>
+                <p className="text-gray-500 mt-1">Welcome back, Admin</p>
             </div>
 
             {/* Stats Grid */}

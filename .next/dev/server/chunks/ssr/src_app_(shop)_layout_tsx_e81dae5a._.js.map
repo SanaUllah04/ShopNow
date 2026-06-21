@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/DELL/Documents/GitHub/E-Commerce/src/app/%28shop%29/layout.tsx"],"sourcesContent":["import Navbar from \"@/components/Navbar\";\r\n\r\nexport default function ShopLayout({ children }: { children: React.ReactNode }) {\r\n    return (\r\n        <>\r\n            <Navbar />\r\n            <div className=\"min-h-screen bg-gray-50\">{children}</div>\r\n            <footer className=\"border-t border-gray-100 bg-white py-8 mt-16 text-center text-sm text-gray-400\">\r\n                © {new Date().getFullYear()} ShopNow. All rights reserved.\r\n            </footer>\r\n        </>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;;;;;;;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAAiC;IAC1E,qBACI;;0BACI,8OAAC;;;;;0BACD,8OAAC;gBAAI,WAAU;0BAA2B;;;;;;0BAC1C,8OAAC;gBAAO,WAAU;;oBAAiF;oBAC5F,IAAI,OAAO,WAAW;oBAAG;;;;;;;;;AAI5C"}}]
-}
