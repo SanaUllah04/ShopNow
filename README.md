@@ -1,73 +1,171 @@
-# E-Commerce Web Application
+# 🛍️ Full-Stack E-Commerce Store
 
-A professional, fully functional, and responsive E-Commerce Web Application optimized for both Web and Mobile platforms.
+A modern **full-stack e-commerce web application** built with **Next.js**, **TypeScript**, and **Tailwind CSS**, featuring a customer-facing storefront, authentication, product management APIs, and an admin dashboard for managing the store.
 
-## 🚀 Overview
+---
 
-This project is a modern E-Commerce solution built with performance and user experience in mind. It features a robust frontend architecture and is designed to be easily extensible.
+## ✨ Features
 
-## ✨ Key Features
+### Storefront
 
-- **Responsive Design**: Optimized for seamless browsing on desktops, tablets, and smartphones.
-- **Modern UI/UX**: Clean and intuitive interface built with React.
-- **Fast Performance**: Powered by Vite for lightning-fast development and optimized production builds.
-- **Type Safety**: Built with TypeScript to ensure reliability and maintainability.
-- **Scalable Architecture**: Organized codebase with separate client and app modules.
+* Browse products with a clean and responsive UI
+* Product cards and modern landing page sections
+* Mobile-friendly design
+* Reusable UI components like Navbar, ProductCard, and PhoneMockup
+
+### Authentication
+
+* User authentication system
+* Secure login / signup flow
+* Protected routes for authorized users
+
+### Product Management
+
+* API routes for product handling
+* Create, read, update, and delete product data
+* Structured backend logic for store operations
+
+### Admin Dashboard
+
+* Dedicated admin panel
+* Manage products and store-related data
+* Dashboard structure ready for future analytics/orders/users features
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vite.dev/)
-- **Backend Framework**: [Express](https://expressjs.com/) (Integration in progress)
-- **Styling**: Modern CSS/Vanilla CSS
-- **State Management**: React Hooks (useState, useEffect)
+### Frontend
 
-## 📂 Project Structure
+* **Next.js**
+* **React**
+* **TypeScript**
+* **Tailwind CSS**
 
-```text
-E-Commerce/
-├── client/         # Vite + React (TypeScript) frontend
-├── my-app/         # Create React App based modules
-├── server/         # Express backend (Work in progress)
-├── brain/          # Project knowledge and task artifacts
-└── package.json    # Root configuration
+### Backend / API
+
+* **Next.js API Routes**
+* **Node.js**
+
+### Other Tools
+
+* **PostCSS**
+* **ESLint**
+* **Environment Variables with `.env.local`**
+
+---
+
+## 📁 Project Structure
+
+```bash
+├── src/
+│   ├── Media/         # Static media/assets used in the app
+│   ├── app/           # App Router pages, layouts, and route structure
+│   ├── components/    # Reusable UI components
+│   ├── lib/           # Utility functions, helpers, configs, and shared logic
+│   ├── models/        # Database/models/schema definitions
+│   ├── public/        # Publicly accessible static files
+│   └── store/         # State management / global store logic
+│
+├── .env.local         # Environment variables
+├── .gitignore
+├── LICENSE
+├── README.md
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
-## ⚙️ Getting Started
+---
 
-### Prerequisites
+## 🚀 Getting Started
 
-- [Node.js](https://nodejs.org/) (Project uses npm)
+### 1) Clone the repository
 
-### Installation
+```bash
+git clone https://github.com/SanaUllah04/<your-repo-name>.git
+cd <your-repo-name>
+```
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/SanaUllah04/E-Commerce-.git
-   cd E-Commerce
-   ```
+### 2) Install dependencies
 
-2. **Install dependencies**:
-   ```bash
-   # In the root directory
-   npm install
+```bash
+npm install
+```
 
-   # In the client directory
-   cd client
-   npm install
-   ```
+### 3) Add environment variables
 
-3. **Run the development server**:
-   ```bash
-   cd client
-   npm run dev
-   ```
+Create a `.env.local` file in the root directory and add the required environment variables.
 
-## 📜 License
+Example:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```env
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+# Add your database/auth/API keys here
+```
 
-## 👤 Author
+### 4) Run the development server
 
-**SanaUllah**
-- GitHub: [@SanaUllah04](https://github.com/SanaUllah04)
+```bash
+npm run dev
+```
+
+Now open:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+## 📌 Available Scripts
+
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run start     # Run production build
+npm run lint      # Run linting
+```
+
+---
+
+## 🎯 Project Goals
+
+This project aims to provide a complete e-commerce foundation with:
+
+* A modern shopping UI
+* Scalable frontend architecture
+* API-based product handling
+* Authentication support
+* Admin dashboard integration
+* Clean and reusable component structure
+
+---
+
+## 🔮 Future Improvements
+
+* Shopping cart functionality
+* Checkout and payment integration
+* Order management
+* User profile and order history
+* Product search and filtering
+* Wishlist support
+* Admin analytics dashboard
+* Image upload for products
+
+---
+
+## 📄 License
+
+This project is licensed under the terms of the **LICENSE** file included in the repository.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Sana Ullah**
+GitHub: [@SanaUllah04](https://github.com/SanaUllah04)
