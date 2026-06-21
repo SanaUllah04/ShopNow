@@ -2,6 +2,8 @@
 
 A modern **full-stack e-commerce web application** built with **Next.js**, **TypeScript**, and **Tailwind CSS**, featuring a customer-facing storefront, authentication, product management APIs, and an admin dashboard for managing the store.
 
+![Home](src/Media/Home.png)
+
 ---
 
 ## ✨ Features
@@ -19,17 +21,23 @@ A modern **full-stack e-commerce web application** built with **Next.js**, **Typ
 * Secure login / signup flow
 * Protected routes for authorized users
 
+![Home](src/Media/Signin.png)
+
 ### Product Management
 
 * API routes for product handling
 * Create, read, update, and delete product data
 * Structured backend logic for store operations
 
+![Home](src/Media/Products.png)
+
 ### Admin Dashboard
 
 * Dedicated admin panel
 * Manage products and store-related data
 * Dashboard structure ready for future analytics/orders/users features
+
+![Home](src/Media/admin%20Dashboard.png)
 
 ---
 
