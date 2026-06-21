@@ -21,7 +21,7 @@ A modern **full-stack e-commerce web application** built with **Next.js**, **Typ
 * Secure login / signup flow
 * Protected routes for authorized users
 
-![Home](src/Media/Signin.png)
+<p align="center"><img src="src/Media/Signin.png" alt="Authentication" /></p>
 
 ### Product Management
 
@@ -29,7 +29,7 @@ A modern **full-stack e-commerce web application** built with **Next.js**, **Typ
 * Create, read, update, and delete product data
 * Structured backend logic for store operations
 
-![Home](src/Media/Products.png)
+![Product](src/Media/Products.png)
 
 ### Admin Dashboard
 
@@ -37,7 +37,7 @@ A modern **full-stack e-commerce web application** built with **Next.js**, **Typ
 * Manage products and store-related data
 * Dashboard structure ready for future analytics/orders/users features
 
-![Home](src/Media/admin%20Dashboard.png)
+![Admin](src/Media/admin%20Dashboard.png)
 
 ---
 
