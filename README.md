@@ -1,4 +1,4 @@
-# 🛍️ Full-Stack E-Commerce Store
+# 🛍️ ShopNow - Full Stack E-Commerce Store
 
 A modern **full-stack e-commerce web application** built with **Next.js**, **TypeScript**, and **Tailwind CSS**, featuring a customer-facing storefront, authentication, product management APIs, and an admin dashboard for managing the store.
 
